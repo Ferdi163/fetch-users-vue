@@ -30,15 +30,11 @@
       }
     },
     created() {
-      this.fetchData({
-        page: this.page,
-      })
+      this.fetchData()
     },
     methods: {
-      fetchData(opt) {
-        Service.fetch({
-          page: opt.page,
-        })
+      fetchData() {
+        return Service.fetch({ page: this.page })
           .then(res => {
             this.isLoading = false
             this.users = this.users.concat(res.results)
@@ -46,15 +42,7 @@
       },
       handleClick() {
         this.page++
-      },
-    },
-    watch: {
-      page(newState, prevState) {
-        if (newState !== prevState) {
-          this.fetchData({
-            page: this.page,
-          })
-        }
+        this.fetchData()
       },
     },
   }

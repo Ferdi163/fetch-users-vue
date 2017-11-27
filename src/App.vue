@@ -34,10 +34,7 @@
     },
     methods: {
       fetchData() {
-        return Service.fetch({
-          page: this.page,
-          numberOfUsers: 2,
-        })
+        return Service.fetch({ page: this.page })
           .then(res => {
             this.isLoading = false
             this.users = this.users.concat(res.results)

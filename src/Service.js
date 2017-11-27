@@ -1,8 +1,8 @@
 import fetch from 'isomorphic-fetch'
 
 export const Service = {
-  fetch(params = {}) {
-    const url = `https://randomuser.me/api/?page=${params.page}&results=${params.numberOfUsers}`
+  fetch(opt = {}) {
+    const url = `https://randomuser.me/api/?page=${opt.page}&results=12`
 
     return fetch(url)
       .then(response => {
